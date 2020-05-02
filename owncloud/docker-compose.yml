@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  mariadb_os:
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD:root_password
+      MYSQL_USER:user
+      MYSQL_PASSWORD:mariadb_pass
+      MYSQL_DATABASE:mariadb
+    volumes:
+      - mariadb_vol:/var/lib/maridb
+
+  owncloud_os:
+    image: owncloud:latest
+    restart: always
+    links:
+      - mariadb_os:owncloud-db
+    ports:
+      - 8080:80
+    environment:
+      OWNCLOUD_DB_TYPE:mysql
+      OWNCLOUD_DB_NAME:mariadb
+      OWNCLOUD_DB_USERNAME:ownUser
+      OWNCLOUD_DB_PASSWORD:ownPass
+      OWNCLOUD_DB_HOST: mariadb_os
+      OWNCLOUD_ADMIN_USERNAME:admin_user
+      OWNCLOUD_ADMIN_PASSWORD:admin_pass
+    volumes:
+      - owncloud_vol:/var/www/html
+
+
+volumes:
+  mariadb_vol:
+  owncloud_vol:  
