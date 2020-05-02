@@ -38,8 +38,8 @@ Create a directory and paste the given `docker-compose.yml` file into the direct
 
 - If your mariadb is correctly working, you will be redirected to `mariadb shell` and you can run sql commands like `show databases;`, `show tables;`, `exit;`  etc.,
 
-#I also started some buildind some  stack app like Lamp , Lemp etc
-  I also uploaded they arent perfectly completed yet
+ ### I also started some buildind some  stack app like Lamp , Lemp etc 
+      -I also uploaded they arent perfectly completed yet
 
 ## Author :
   -> Syed Faheemuddin
