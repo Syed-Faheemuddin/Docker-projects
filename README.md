@@ -1,5 +1,5 @@
 # Docker-projects
-The Infrastructure projects on docker under the training of VIMAL DAGA from IIEC
+The Infrastructure projects on docker 
 ## Getting Started 
 
 Get ready with the following stuff before diving into **docker-compose.yml** file.
