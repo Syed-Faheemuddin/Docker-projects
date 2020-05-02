@@ -1,0 +1,29 @@
+version: '3'
+services:
+        joomla:
+                image: joomla:latest
+                links:
+                        - mysql
+                ports:
+                        - 8080:80
+                environment:
+                        - JOOMLA_DB_PASSWORD:syed#456
+                        - JOOMLA_DB_HOST=:mysql:3306
+                volumes:
+                        - joomla_vol:/var/www/html
+
+        mysql:
+                image: mysql:5.7
+                restart: always
+                environment:
+                        - MYSQL_ROOT_PASSWORD:syed#456
+                        - MYSQL_USER:faheem
+                        - MYSQL_PASSWORD:syed123
+                        - MYSQL_DATABASE:joomla
+                volumes:
+                        - mysql_server_vol:/var/lib/mysql
+
+volumes:
+      mysql_server_vol:
+      joomla_vol:
+
