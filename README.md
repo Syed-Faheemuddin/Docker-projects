@@ -42,14 +42,14 @@ Paste the given `docker-compose.yml` file into the directory. In the Terminal, h
 
 - If your mariadb is correctly working, you will be redirected to `mariadb shell` and you can run sql commands like `show databases;`, `show tables;`, `exit;`  etc.
 
-##Testing 
+## Testing 
   Go to your web browser and in type
   
   >`localhost:(port_number)`
 
  ### I also started some building environments for some stacks like Lamp_stack , Lemp_stack etc
  
-      -I also uploaded ,they just the setup environment.
+      -I also uploaded ,they just setup the environment.
       
 ## Author :
   -> Syed Faheemuddin
