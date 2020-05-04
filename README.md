@@ -1,5 +1,6 @@
 # Docker-projects
 The Infrastructure projects on docker 
+With just one command We can set up an environment with lots of containers with required technology
 ## Getting Started 
 
 Get ready with the following stuff before diving into **docker-compose.yml** file.
@@ -15,8 +16,11 @@ Get ready with the following stuff before diving into **docker-compose.yml** fil
   - Go to the following [link](http://httpd.apache.org/docs/2.4/install.html) to download and install httpd. You can configure `httpd.conf` file.
   
 ## Running the docker-compose :
+Go to the above given directories
 
-Create a directory and paste the given `docker-compose.yml` file into the directory. In the Terminal, head to the directory and run:
+> `cd <name of the directory>`
+
+Paste the given `docker-compose.yml` file into the directory. In the Terminal, head to the directory and run:
 
 > `docker-compose up -d`
 
@@ -36,11 +40,17 @@ Create a directory and paste the given `docker-compose.yml` file into the direct
 
   > mysql -h `IP of mariadb` -u `username of mariadb` -p`password of mariadb`
 
-- If your mariadb is correctly working, you will be redirected to `mariadb shell` and you can run sql commands like `show databases;`, `show tables;`, `exit;`  etc.,
+- If your mariadb is correctly working, you will be redirected to `mariadb shell` and you can run sql commands like `show databases;`, `show tables;`, `exit;`  etc.
 
- ### I also started some buildind some  stack app like Lamp , Lemp etc 
-      -I also uploaded they arent perfectly completed yet
+##Testing 
+  Go to your web browser and in type
+  
+  >`localhost:(port_number)`
 
+ ### I also started some building environments for some stacks like Lamp_stack , Lemp_stack etc
+ 
+      -I also uploaded ,they just the setup environment.
+      
 ## Author :
   -> Syed Faheemuddin
   
