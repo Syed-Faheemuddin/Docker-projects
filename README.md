@@ -49,7 +49,7 @@ Paste the given `docker-compose.yml` file into the directory. In the Terminal, h
 
  ### I also started some building environments for some stacks like Lamp_stack , Lemp_stack etc
  
-      -I also uploaded ,they just setup the environment.
+      -I also uploaded them ,they just setup the environment.
       
 ## Author :
   -> Syed Faheemuddin
