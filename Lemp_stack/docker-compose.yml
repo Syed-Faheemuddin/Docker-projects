@@ -1,0 +1,39 @@
+nginx:
+    image: 'bitnami/nginx'
+    ports:
+        - '1000:1000'
+    links:
+        - phpfpm
+    volumes:
+        - ./logs/access.log:/opt/bitnami/nginx/logs/myapp-access.log
+        - ./logs/error.log:/opt/bitnami/nginx/logs/myapp-error.log
+        - ./nginx/app.conf:/opt/bitnami/nginx/conf/vhosts/app.conf
+        - ./public:/myapps
+
+phpfpm:
+    image: 'bitnami/php-fpm'
+    ports:
+        - '9000:9000'
+    volumes:
+        - ./public:/myapps
+
+mysql:
+    image: 'mariadb'
+    ports:
+        - '3306:3306'
+    volumes:
+        - ./db-data:/var/lib/mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=toor
+
+phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin'
+    restart: always
+    ports:
+       - '2000:2000'
+    links:
+        - mysql:mysql
+    environment:
+        MYSQL_USERNAME: root
+        MYSQL_ROOT_PASSWORD: toor
+        PMA_HOST: mysql
