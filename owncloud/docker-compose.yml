@@ -1,36 +1,54 @@
 version: '3'
 
 services:
-  mariadb_os:
-    image: mariadb:latest
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD:root_password
-      MYSQL_USER:user
-      MYSQL_PASSWORD:mariadb_pass
-      MYSQL_DATABASE:mariadb
-    volumes:
-      - mariadb_vol:/var/lib/maridb
-
-  owncloud_os:
+  owncloud:
     image: owncloud:latest
     restart: always
-    links:
-      - mariadb_os:owncloud-db
     ports:
-      - 8080:80
+      - 8081:80
+    depends_on:
+      - db
+      - redis
     environment:
-      OWNCLOUD_DB_TYPE:mysql
-      OWNCLOUD_DB_NAME:mariadb
-      OWNCLOUD_DB_USERNAME:ownUser
-      OWNCLOUD_DB_PASSWORD:ownPass
-      OWNCLOUD_DB_HOST: mariadb_os
-      OWNCLOUD_ADMIN_USERNAME:admin_user
-      OWNCLOUD_ADMIN_PASSWORD:admin_pass
+      - OWNCLOUD_DB_TYPE=mysql
+      - OWNCLOUD_DB_NAME=owncloud
+      - OWNCLOUD_DB_USERNAME=owncloud
+      - OWNCLOUD_DB_PASSWORD=owncloud
+      - OWNCLOUD_DB_HOST=db
+      - OWNCLOUD_ADMIN_USERNAME=admin
+      - OWNCLOUD_ADMIN_PASSWORD=admin
+      - OWNCLOUD_MYSQL_UTF8MB4=true
+      - OWNCLOUD_REDIS_ENABLED=true
+      - OWNCLOUD_REDIS_HOST=redis
     volumes:
-      - owncloud_vol:/var/www/html
+      - files:/mnt/data
 
+  db:
+    image: webhippie/mariadb:latest
+    restart: always
+    environment:
+      - MARIADB_ROOT_PASSWORD=owncloud
+      - MARIADB_USERNAME=owncloud
+      - MARIADB_PASSWORD=owncloud
+      - MARIADB_DATABASE=owncloud
+    volumes:
+      - mysql:/var/lib/mysql
+      - backup:/var/lib/backup
 
+  redis:
+    image: webhippie/redis:latest
+    restart: always
+    environment:
+      - REDIS_DATABASES=1
+    volumes:
+      - redis:/var/lib/redis
 volumes:
-  mariadb_vol:
-  owncloud_vol:  
+  files:
+    driver: local
+  mysql:
+    driver: local
+  backup:
+    driver: local
+  redis:
+    driver: local
+
