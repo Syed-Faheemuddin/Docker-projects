@@ -59,6 +59,10 @@ It gives the IP of all the containers currently running
  ### I also started some building environments for some stacks like Lamp_stack , Lemp_stack etc
  
       -I also uploaded them ,they just setup the environment.
+
+### Currently working on and also would like to get contribution from others
+     - Lamp stack
+     - Lemp stack
       
 ## Author :
   -> Syed Faheemuddin
